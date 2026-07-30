@@ -696,6 +696,7 @@
             .btn-primary, .btn-secondary, .btn-book { width: 100%; justify-content: center; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
     <div class="bg-animation"></div>
@@ -755,7 +756,7 @@
                         <div class="stat-label">Book Chapters</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">2</div>
+                        <div class="stat-number">3</div>
                         <div class="stat-label">Published Packages</div>
                     </div>
                     <div class="stat-item">
@@ -915,28 +916,75 @@
                     <div class="project-header">
                         <div class="project-icon"><i class="fas fa-heartbeat"></i></div>
                         <div>
-                            <div class="project-title">Clinical Trial Dashboard</div>
-                            <span class="project-lang">R Shiny · Live App</span>
+                            <div class="project-title">TrialView Pro</div>
+                            <span class="project-lang">R Shiny · Docker · CI/CD · SQLite</span>
                         </div>
                     </div>
                     <p class="project-desc">
-                        An interactive web dashboard for monitoring and analyzing clinical trial data. 
-                        Built with R Shiny and deployed live on Shinyapps.io for real-time data exploration.
+                        A production-ready Phase II diabetes clinical trial monitoring system using CDISC SDTM data. 
+                        Features role-based access control, audit logging, patient management, and safety tracking — 
+                        deployed via Docker and Shinyapps.io with GitHub Actions CI/CD.
                     </p>
                     <ul class="project-features">
-                        <li>Interactive data filtering and exploration</li>
-                        <li>Real-time visualizations and metrics</li>
-                        <li>Deployed and hosted on Shinyapps.io</li>
-                        <li>Production-ready web application</li>
+                        <li><strong>Role-Based Access Control</strong> — Investigator, Monitor, Admin with scoped permissions</li>
+                        <li><strong>Enrollment & Safety Monitoring</strong> — AE/SAE tables, SOC drill-down, CSV export</li>
+                        <li><strong>Efficacy Tracking</strong> — Glucose trajectories, responder analysis, lab results</li>
+                        <li><strong>Patient Management</strong> — Longitudinal profiles, new subject entry, baseline data</li>
+                        <li><strong>Audit Logging</strong> — Full SQLite-backed audit trail for compliance</li>
+                        <li><strong>CI/CD Pipeline</strong> — GitHub Actions with linting, styling, data integrity tests</li>
+                        <li><strong>Docker Deployment</strong> — Multi-stage Dockerfile + docker-compose</li>
                     </ul>
                     <div class="project-stats">
-                        <div class="project-stat"><strong>Live</strong>Deployment</div>
-                        <div class="project-stat"><strong>R Shiny</strong>Framework</div>
-                        <div class="project-stat"><strong>Healthcare</strong>Domain</div>
+                        <div class="project-stat"><strong>CDISC</strong>SDTM Standard</div>
+                        <div class="project-stat"><strong>SQLite</strong>Database</div>
+                        <div class="project-stat"><strong>RBAC</strong>3 User Roles</div>
                     </div>
-                    <a href="https://musanyaks.shinyapps.io/clinical-trial-dashboard/" target="_blank" class="project-link">
-                        View Live Dashboard <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <div style="display:flex;gap:1rem;margin-top:1rem;">
+                        <a href="https://musanyaks.shinyapps.io/clinical-trial-dashboard/" target="_blank" class="project-link">
+                            Live Demo <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://github.com/musanyaks/clinical-trial-dashboard" target="_blank" class="project-link">
+                            View Code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sales Analytics Dashboard -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                        <div>
+                            <div class="project-title">Sales Analytics Dashboard</div>
+                            <span class="project-lang">R Shiny · bslib · plotly · Live App</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        A production-ready business intelligence dashboard for sales analytics and executive reporting. 
+                        Features reactive filters, KPI cards with trend indicators, interactive Plotly charts, 
+                        sortable data tables, and one-click CSV export — all in a responsive dark theme.
+                    </p>
+                    <ul class="project-features">
+                        <li><strong>Reactive Filters</strong> — Region, Product, and Time Period update all charts instantly</li>
+                        <li><strong>KPI Cards</strong> — Revenue, Users, Conversion Rate, Avg. Order Value with trend indicators</li>
+                        <li><strong>Interactive Charts</strong> — Revenue trends, regional donut chart, product bar chart (Plotly)</li>
+                        <li><strong>Sortable Data Table</strong> — Recent transactions with styled status badges (DT)</li>
+                        <li><strong>One-Click Export</strong> — Download filtered data as CSV directly from the dashboard</li>
+                        <li><strong>Dark Theme UI</strong> — Modern professional design using bslib with custom CSS</li>
+                        <li><strong>Fully Responsive</strong> — Works on desktop, tablet, and mobile</li>
+                    </ul>
+                    <div class="project-stats">
+                        <div class="project-stat"><strong>Live</strong>Shinyapps.io</div>
+                        <div class="project-stat"><strong>Plotly</strong>Interactive</div>
+                        <div class="project-stat"><strong>BI</strong>Sales Analytics</div>
+                    </div>
+                    <div style="display:flex;gap:1rem;margin-top:1rem;">
+                        <a href="https://musanyaks.shinyapps.io/R-shiny-dashboard/" target="_blank" class="project-link">
+                            Live Demo <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://github.com/musanyaks/R-shiny-dashboard" target="_blank" class="project-link">
+                            View Code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- ugcensus -->
@@ -995,6 +1043,37 @@
                         <div class="project-stat"><strong>62M</strong>Pop. (2022)</div>
                     </div>
                     <a href="https://github.com/musanyaks/sacensus" target="_blank" class="project-link">
+                        View on GitHub <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- kenyacensus -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <div class="project-title">kenyacensus</div>
+                            <span class="project-lang">R Package</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        A comprehensive toolkit for accessing Kenya's Population and Housing Census data 
+                        from the Kenya National Bureau of Statistics (KNBS). Covers 1948 to 2019 with 13 themed datasets.
+                    </p>
+                    <ul class="project-features">
+                        <li>8 historical census years: 1948, 1962, 1969, 1979, 1989, 1999, 2009, 2019</li>
+                        <li>13 datasets: demographics, education, ethnicity, disability, water, ICT, employment</li>
+                        <li>47 counties with full 2019 socio-economic data</li>
+                        <li>Built-in visualization: trends, pyramids, county comparisons, maps</li>
+                        <li>Growth rate calculations and county-level filtering</li>
+                        <li>CC0 Public Domain license</li>
+                    </ul>
+                    <div class="project-stats">
+                        <div class="project-stat"><strong>8</strong>Census Years</div>
+                        <div class="project-stat"><strong>47</strong>Counties</div>
+                        <div class="project-stat"><strong>13</strong>Datasets</div>
+                    </div>
+                    <a href="https://github.com/musanyaks/kenyacensus" target="_blank" class="project-link">
                         View on GitHub <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
