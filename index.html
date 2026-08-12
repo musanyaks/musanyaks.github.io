@@ -696,6 +696,7 @@
             .btn-primary, .btn-secondary, .btn-book { width: 100%; justify-content: center; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
     <div class="bg-animation"></div>
@@ -910,6 +911,41 @@
                 </p>
             </div>
             <div class="projects-grid">
+                <!-- Data Engineering Pipeline -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-server"></i></div>
+                        <div>
+                            <div class="project-title">End-to-End Data Engineering Pipeline</div>
+                            <span class="project-lang">Python · Airflow · Spark · dbt · Snowflake · Docker</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        A production-grade ETL/ELT data platform that ingests raw sales, customer, and product data 
+                        from multiple sources, cleans and transforms it, and delivers analytics-ready datasets 
+                        for business reporting. Designed to run on a standard 16GB RAM laptop.
+                    </p>
+                    <ul class="project-features">
+                        <li><strong>Apache Airflow (CeleryExecutor)</strong> — 3 DAGs orchestrating hourly ETL with task dependency graphs, XCom, and automatic retry policies</li>
+                        <li><strong>Dual-Mode Processing</strong> — Pandas for &lt;1GB datasets, PySpark for 1–50GB datasets with adaptive query execution</li>
+                        <li><strong>dbt Medallion Architecture</strong> — Staging → Intermediate → Marts with incremental fact tables, SCD snapshots, and custom macros</li>
+                        <li><strong>Multi-Source Ingestion</strong> — CSV extractor, Snowflake extractor (key-pair auth), REST API extractor with retry logic</li>
+                        <li><strong>Data Quality Gates</strong> — Runtime validators, dbt tests (uniqueness, not-null, positive revenue), structured JSON logging</li>
+                        <li><strong>Docker Compose Stack</strong> — Full environment with Airflow + Spark + PostgreSQL + Redis, tuned for 16GB RAM</li>
+                        <li><strong>CI/CD</strong> — GitHub Actions, pre-commit hooks, pytest with unit/integration/Spark test matrix</li>
+                    </ul>
+                    <div class="project-stats">
+                        <div class="project-stat"><strong>3</strong>Airflow DAGs</div>
+                        <div class="project-stat"><strong>6</strong>dbt Marts</div>
+                        <div class="project-stat"><strong>Full</strong>Stack</div>
+                    </div>
+                    <div style="display:flex;gap:1rem;margin-top:1rem;">
+                        <a href="https://github.com/musanyaks/data_engineering_python_project" target="_blank" class="project-link">
+                            View Code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Clinical Trial Dashboard -->
                 <div class="project-card fade-in">
                     <div class="project-header">
@@ -981,6 +1017,44 @@
                             Live Demo <i class="fas fa-external-link-alt"></i>
                         </a>
                         <a href="https://github.com/musanyaks/R-shiny-dashboard" target="_blank" class="project-link">
+                            View Code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kenya Insurance Hub -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <div class="project-title">Kenya Insurance Hub</div>
+                            <span class="project-lang">R Shiny · bslib · plotly · Live App</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        A comprehensive insurance marketplace platform for Kenya's insurance market. 
+                        Features 4 premium calculators, company directory, market analysis, 
+                        regulatory compliance tracking, and NHIF benefits — all in one interactive dashboard.
+                    </p>
+                    <ul class="project-features">
+                        <li><strong>4 Premium Calculators</strong> — Motor, Health, Life, and Agriculture with real-time quote comparison across 28 insurers</li>
+                        <li><strong>Company Directory</strong> — Filterable directory of 28 licensed insurers with financial ratings, contact details, and product listings</li>
+                        <li><strong>Market Analysis</strong> — Interactive bar, pie, and treemap charts for market share, ratings, and product distribution</li>
+                        <li><strong>NHIF Benefits</strong> — Full coverage details for 19 NHIF benefits with co-payment and waiting period info</li>
+                        <li><strong>Regulatory Compliance</strong> — IRA contacts, complaint procedures, agent verification, and unlicensed scheme warnings</li>
+                        <li><strong>8 Structured Datasets</strong> — 28 companies, 69 products, 41 motor premiums, 21 health premiums, 27 life premiums, 12 agriculture products, 19 NHIF benefits</li>
+                        <li><strong>Consumer & Researcher Focused</strong> — Built for consumers shopping for insurance, researchers analyzing trends, and policymakers tracking industry performance</li>
+                    </ul>
+                    <div class="project-stats">
+                        <div class="project-stat"><strong>28</strong>Insurers</div>
+                        <div class="project-stat"><strong>69</strong>Products</div>
+                        <div class="project-stat"><strong>11</strong>Tabs</div>
+                    </div>
+                    <div style="display:flex;gap:1rem;margin-top:1rem;">
+                        <a href="https://musanyaks.shinyapps.io/kenya-insurance-hub-v2/" target="_blank" class="project-link">
+                            Live Demo <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://github.com/musanyaks/kenya-insurance-hub" target="_blank" class="project-link">
                             View Code <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -1155,11 +1229,12 @@
                         <h3>Production & Deployment</h3>
                     </div>
                     <div class="skill-tags">
+                        <span class="skill-tag highlight">Docker Compose</span>
+                        <span class="skill-tag highlight">GitHub Actions</span>
                         <span class="skill-tag highlight">Shinyapps.io</span>
                         <span class="skill-tag">plumber (APIs)</span>
-                        <span class="skill-tag">Redis</span>
                         <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">pre-commit</span>
                     </div>
                 </div>
 
@@ -1169,11 +1244,13 @@
                         <h3>Databases & Cloud</h3>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag">PostgreSQL (RPostgres)</span>
+                        <span class="skill-tag highlight">Snowflake</span>
+                        <span class="skill-tag highlight">PostgreSQL</span>
+                        <span class="skill-tag highlight">Docker</span>
+                        <span class="skill-tag highlight">Redis</span>
                         <span class="skill-tag">BigQuery (bigrquery)</span>
-                        <span class="skill-tag">dbplyr</span>
+                        <span class="skill-tag">SQLite</span>
                         <span class="skill-tag">AWS (Learning)</span>
-                        <span class="skill-tag">Docker (Learning)</span>
                     </div>
                 </div>
 
@@ -1196,11 +1273,10 @@
                         <h3>Growing Into</h3>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag">Apache Airflow</span>
-                        <span class="skill-tag">dbt</span>
-                        <span class="skill-tag">Snowflake</span>
-                        <span class="skill-tag">Spark</span>
                         <span class="skill-tag">Kafka</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">AWS/GCP Production</span>
                     </div>
                 </div>
             </div>
@@ -1253,12 +1329,9 @@
                         Optimized for printing — open in browser and press Ctrl+P to save as PDF.
                     </p>
 
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <a href="Musa_Rioba_Resume.docx" download="Musa_Rioba_Resume.docx" class="btn-primary" style="font-size: 0.95rem; padding: 0.75rem 2rem;">
-                            <i class="fas fa-file-word"></i> Download Word
-                        </a>
-                        <a href="Musa_Rioba_Resume.pdf" download="Musa_Rioba_Resume.pdf" class="btn-primary" style="font-size: 0.95rem; padding: 0.75rem 2rem;">
-                            <i class="fas fa-file-pdf"></i> Download PDF
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <a href="musa_rioba_resume.html" download="Musa_Rioba_Resume.html" class="btn-primary" style="font-size: 0.95rem; padding: 0.75rem 2rem;">
+                            <i class="fas fa-download"></i> Download Resume
                         </a>
                         <a href="musa_rioba_resume.html" target="_blank" class="btn-secondary" style="font-size: 0.95rem; padding: 0.75rem 2rem;">
                             <i class="fas fa-external-link-alt"></i> Preview Online
