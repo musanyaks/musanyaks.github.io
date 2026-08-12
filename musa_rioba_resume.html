@@ -146,11 +146,11 @@
     <h2>Technical Skills</h2>
     <table class="skills-table">
         <tr><td>Languages</td><td><span class="highlight">R (Expert)</span>, Python, SQL, Bash</td></tr>
-        <tr><td>Data Engineering</td><td>ETL/ELT pipelines, targets orchestration, Data cleaning, Web scraping, API integration (plumber), Data modeling</td></tr>
+        <tr><td>Data Engineering</td><td><span class="highlight">Apache Airflow</span>, <span class="highlight">Apache Spark</span>, <span class="highlight">dbt</span>, ETL/ELT pipelines, targets orchestration, Data cleaning, Web scraping, API integration, Data modeling</td></tr>
         <tr><td>Machine Learning</td><td>tidymodels, XGBoost, Prophet, K-Means, RFM, Markov chains, Isolation forests</td></tr>
         <tr><td>Dashboards</td><td><span class="highlight">R Shiny</span>, shinydashboard, ggplot2, Plotly, DT</td></tr>
-        <tr><td>Databases</td><td>PostgreSQL (RPostgres), BigQuery (bigrquery), dbplyr, Redis, SQLite</td></tr>
-        <tr><td>Deployment</td><td>Shinyapps.io, plumber APIs, GitHub Actions, Docker, docker-compose</td></tr>
+        <tr><td>Databases</td><td><span class="highlight">Snowflake</span>, <span class="highlight">PostgreSQL</span>, <span class="highlight">Redis</span>, BigQuery (bigrquery), SQLite, dbplyr</td></tr>
+        <tr><td>Deployment</td><td><span class="highlight">Docker Compose</span>, <span class="highlight">GitHub Actions</span>, Shinyapps.io, plumber APIs, pre-commit</td></tr>
         <tr><td>Experimentation</td><td>A/B testing, Sequential testing, Bayesian methods</td></tr>
     </table>
 
@@ -182,6 +182,20 @@
 
     <h2>Featured Projects</h2>
     <div class="project-card-pdf">
+        <div class="project-title-pdf">End-to-End Data Engineering Pipeline</div>
+        <div class="project-meta-pdf">Python · Airflow · Spark · dbt · Snowflake · Docker | Source Code</div>
+        <ul>
+            <li><strong>Apache Airflow</strong> — 3 DAGs with CeleryExecutor, XCom, retry policies, task dependency graphs</li>
+            <li><strong>Dual-Mode Processing</strong> — Pandas (&lt;1GB) + PySpark (1–50GB) with AQE and memory tuning</li>
+            <li><strong>dbt Medallion Architecture</strong> — Staging → Intermediate → Incremental Marts with SCD Type 2</li>
+            <li><strong>Multi-Source Extractors</strong> — CSV, Snowflake (key-pair auth), REST API with retry logic</li>
+            <li><strong>Data Quality Gates</strong> — Runtime validators, dbt schema tests, structured JSON logging</li>
+            <li><strong>Full Stack Docker</strong> — Airflow + Spark + PostgreSQL + Redis, tuned for 16GB RAM</li>
+            <li><strong>CI/CD</strong> — GitHub Actions, pre-commit hooks, pytest (unit/integration/Spark matrix)</li>
+        </ul>
+    </div>
+
+    <div class="project-card-pdf">
         <div class="project-title-pdf">TrialView Pro — Phase II Clinical Trial Monitoring System</div>
         <div class="project-meta-pdf">R Shiny · SQLite · Docker · CI/CD | Live Demo + Source Code</div>
         <ul>
@@ -198,6 +212,18 @@
             <li>Business intelligence dashboard with reactive filters, KPI cards with trend indicators</li>
             <li>Interactive Plotly charts, sortable data tables, one-click CSV export</li>
             <li>Responsive dark theme UI using bslib, works on desktop, tablet, and mobile</li>
+        </ul>
+    </div>
+
+    <div class="project-card-pdf">
+        <div class="project-title-pdf">Kenya Insurance Hub</div>
+        <div class="project-meta-pdf">R Shiny · bslib · plotly · DT | Live Demo + Source Code</div>
+        <ul>
+            <li><strong>Insurance marketplace platform</strong> — 4 premium calculators (Motor, Health, Life, Agriculture) across 28 insurers</li>
+            <li><strong>Company directory</strong> — 28 licensed insurers with ratings, contacts, branches, and 69 products</li>
+            <li><strong>Market analysis</strong> — Interactive bar, pie, treemap charts for market share and product distribution</li>
+            <li><strong>NHIF benefits</strong> — Full coverage details for 19 benefits with co-payment and waiting periods</li>
+            <li><strong>Regulatory compliance</strong> — IRA contacts, complaint procedures, agent verification</li>
         </ul>
     </div>
 

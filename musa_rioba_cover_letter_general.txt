@@ -1,0 +1,40 @@
+Musa Rioba
+nyakerabachi@gmail.com
+[Date]
+
+Dear Hiring Manager,
+
+I am a Data Engineer and published author with 6+ years of experience building production data systems, automated pipelines, and interactive dashboards. I am excited about the opportunity to bring my expertise in data engineering, visualization, and production system design to your team.
+
+I am the author of "Production Data Science with R" — a comprehensive hands-on guide covering end-to-end ML pipelines, automated ETL orchestration, real-time fraud detection, and A/B testing frameworks. The book covers 8 production-grade data systems, each following a consistent architecture: business context, system design, implementation, evaluation, and deployment.
+
+Beyond the book, I have built and deployed multiple production data systems:
+
+- **End-to-End Data Engineering Pipeline** — A production-grade ETL/ELT data platform built with **Apache Airflow, Apache Spark, dbt, Snowflake, PostgreSQL, Redis, and Docker**. Features 3 orchestrated Airflow DAGs, dual-mode processing (Pandas for <1GB, PySpark for 1–50GB), dbt medallion architecture with incremental marts, multi-source extractors (CSV, Snowflake key-pair auth, REST API), data quality gates, and full CI/CD with GitHub Actions. Tuned to run on a 16GB RAM laptop.
+
+- **TrialView Pro** — A Phase II clinical trial monitoring system with role-based access control, SQLite audit logging, Docker deployment, and GitHub Actions CI/CD. Built with CDISC SDTM standard data for regulatory compliance.
+
+- **Sales Analytics Dashboard** — A business intelligence platform with reactive filters, KPI cards with trend indicators, interactive Plotly charts, and one-click CSV export. Deployed live on Shinyapps.io.
+
+- **Kenya Insurance Hub** — A comprehensive insurance marketplace platform with 4 premium calculators (Motor, Health, Life, Agriculture), a directory of 28 licensed insurers with 69 products, market analysis with interactive charts, NHIF benefits tracking, and regulatory compliance tools. Deployed live on Shinyapps.io.
+
+- **Three Open-Source Census Packages** — `ugcensus`, `sacensus`, and `kenyacensus` provide programmatic access to national census data across 24 census years and 3 countries. These packages handle the full data lifecycle: fetching raw data, cleaning and standardizing it, and structuring it into analysis-ready formats with built-in visualization tools.
+
+My professional background includes 2+ years as a freelance data engineer on Upwork, delivering custom data analysis and visualization projects across healthcare, demographics, and research sectors. I also spent 4 years as a Technical Trainer, teaching data analysis, R programming, Python, and visualization to over 100 students and professionals.
+
+My BSc in Actuarial Science from Karatina University gives me a strong foundation in statistical modeling, risk analysis, and working with large structured datasets. I am proficient in R (Expert), Python, and SQL, with hands-on experience in database integration, API development, Docker, and CI/CD.
+
+I am passionate about building scalable, observable, and safe data systems that turn raw data into actionable insights. I would welcome the opportunity to discuss how my background in production data engineering can contribute to your team's success.
+
+Thank you for your time and consideration.
+
+Sincerely,
+
+Musa Rioba
+
+---
+
+**Portfolio:** https://musanyaks.github.io/
+**Book:** https://fantastic-alfajores-5f5b96.netlify.app/
+**GitHub:** https://github.com/musanyaks
+**LinkedIn:** https://www.linkedin.com/in/musarioba/
