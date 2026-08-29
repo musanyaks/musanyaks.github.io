@@ -246,6 +246,7 @@
     </style>
     <base target="_blank">
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
     <div class="bg-animation"></div>
@@ -617,6 +618,46 @@
                         </a>
                         <a href="https://github.com/musanyaks/kenya-insurance-hub" target="_blank" class="project-link">
                             View Code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Loss Reserving Workbench -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-calculator"></i></div>
+                        <div>
+                            <div class="project-title">Loss Reserving Workbench</div>
+                            <span class="project-lang">Python &middot; Streamlit &middot; SQLAlchemy &middot; Alembic</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        Production-oriented actuarial loss reserving application: claim-triangle analysis 
+                        with classic deterministic methods, stochastic uncertainty models, and a governed, 
+                        fully audited persistence layer.
+                    </p>
+                    <ul class="project-features">
+                        <li><strong>Chain Ladder</strong> with selectable factor averaging (volume-weighted / simple, all-years / last-N) and tail factor</li>
+                        <li><strong>Mack (1993)</strong> reserve uncertainty — per-origin and total prediction error, lognormal confidence ranges</li>
+                        <li><strong>ODP Bootstrap</strong> (England & Verrall 2002; Shapland 2016) — parameter + process uncertainty, empirical percentile bands</li>
+                        <li><strong>Bornhuetter-Ferguson</strong>, <strong>Cape Cod</strong> (Stanard-Bühlmann), <strong>Expected Loss Ratio</strong></li>
+                        <li><strong>Governance layer</strong> — preparer → reviewer → approver workflow with segregation of duties enforced server-side</li>
+                        <li><strong>Full audit trail</strong> — locked valuations, unlocking with recorded reason, reproducible saved runs</li>
+                        <li><strong>Alembic-managed schema</strong> — SQLite (WAL) or PostgreSQL via one env var</li>
+                        <li><strong>Excel export</strong> workbook &middot; Docker &middot; CI &middot; 38 tests</li>
+                    </ul>
+                    <div class="project-stats">
+                        <div class="project-stat"><strong>5</strong>Methods</div>
+                        <div class="project-stat"><strong>38</strong>Tests</div>
+                        <div class="project-stat"><strong>Live</strong>Streamlit</div>
+                        <div class="project-stat"><strong>4</strong>User Roles</div>
+                    </div>
+                    <div style="display:flex;gap:1rem;margin-top:1rem;">
+                        <a href="https://github.com/musanyaks/loss-reserving-app" target="_blank" class="project-link">
+                            View on GitHub <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://loss-reserving-app.streamlit.app" target="_blank" class="project-link">
+                            Live Demo <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
                 </div>
