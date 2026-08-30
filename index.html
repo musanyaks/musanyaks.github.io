@@ -275,11 +275,12 @@
                     Author.<br>
                     <span class="gradient-text">Builder.</span>
                 </h1>
-                <p class="hero-subtitle">6+ Years Experience &middot; BSc Actuarial Science &middot; Technical Trainer</p>
+                <p class="hero-subtitle">6+ Years Experience &middot; API &amp; ETL Systems &middot; Published Author &middot; Technical Trainer</p>
                 <p class="hero-desc">
-                    I write production-grade data systems, teach others to do the same, and published 
+                    I design production-grade APIs and data systems, teach others to do the same, and published 
                     a comprehensive book on building production data science pipelines with R. 
-                    From ETL orchestration to real-time fraud detection, I turn raw data into systems that last.
+                    From RESTful API architecture to ETL orchestration and multi-step approval workflows, 
+                    I build structured, observable systems that handle complex real-world interactions.
                 </p>
                 <div class="hero-buttons">
                     <a href="https://fantastic-alfajores-5f5b96.netlify.app/" target="_blank" class="btn-book">
@@ -331,20 +332,22 @@
                 <div class="about-text fade-in">
                     <p>
                         I am <strong>Musa Rioba</strong>, a Data Engineer with a BSc in Actuarial Science from 
-                        Karatina University and <strong>6+ years of hands-on experience</strong> across freelancing, 
-                        technical training, and open source development.
+                        Karatina University and <strong>6+ years of hands-on experience</strong> designing production APIs, 
+                        ETL pipelines, and multi-step workflow systems across freelancing, technical training, and open source.
                     </p>
                     <p>
                         I wrote <strong>"Production Data Science with R"</strong> — a comprehensive guide covering 
                         end-to-end ML pipelines, automated ETL with <code>targets</code>, real-time fraud detection 
                         with Redis, interactive dashboards with Shiny, and robust A/B testing frameworks. 
-                        Every chapter follows production best practices: reproducibility, scalability, observability, and safety.
+                        Every chapter follows production best practices: reproducibility, scalability, observability, and safety. 
+                        My background in actuarial science and technical training has honed my ability to break down 
+                        complex tasks into precise, logical steps — a skill I apply to API design and structured system interactions.
                     </p>
                     <p>
-                        Beyond the book, I have published two open-source R packages (<strong>ugcensus</strong>, 
-                        <strong>sacensus</strong>), built a live Clinical Trial Dashboard, and spent 
-                        <strong>4 years as a Technical Trainer</strong> teaching data analysis and programming 
-                        to over 100 students and professionals.
+                        Beyond the book, I have published three open-source R packages (<strong>ugcensus</strong>, 
+                        <strong>sacensus</strong>, <strong>kenyacensus</strong>), built production APIs and dashboards 
+                        with role-based access control, and spent <strong>4 years as a Technical Trainer</strong> teaching 
+                        data analysis, API design, and programming to over 100 students and professionals.
                     </p>
                 </div>
                 <div class="about-highlight fade-in">
@@ -358,8 +361,8 @@
                     <div class="highlight-item">
                         <div class="highlight-icon"><i class="fas fa-project-diagram"></i></div>
                         <div class="highlight-content">
-                            <h4>Pipeline Architecture</h4>
-                            <p>ETL orchestration, real-time systems, ML pipelines, and automated workflows</p>
+                            <h4>Pipeline &amp; API Architecture</h4>
+                            <p>RESTful API design, ETL orchestration, multi-step workflows, ML pipelines, and automated systems</p>
                         </div>
                     </div>
                     <div class="highlight-item">
@@ -373,7 +376,7 @@
                         <div class="highlight-icon"><i class="fas fa-box-open"></i></div>
                         <div class="highlight-content">
                             <h4>Open Source</h4>
-                            <p>2 published R packages, live dashboards, and production-tested tools</p>
+                            <p>3 published R packages, live dashboards, production APIs, and production-tested tools</p>
                         </div>
                     </div>
                 </div>
@@ -447,8 +450,9 @@
                     </div>
                     <p class="project-desc">
                         A full-stack usage-based insurance (UBI) platform for the Kenyan motor insurance market. 
-                        Includes a Flutter mobile app for drivers (&ldquo;Telematics Kenya&rdquo;) and a web-based 
-                        backend admin dashboard (telematics-risk-app.fly.dev) for fleet managers and underwriters.
+                        Features a Flutter mobile app and a production REST API backend with 10+ structured endpoints 
+                        handling authentication, scoring, driver profiles, and audit trails — designed for 
+                        reliable request/response patterns and stateful multi-step interactions.
                     </p>
                     <ul class="project-features">
                         <li><strong>Flutter Mobile App</strong> — &ldquo;Telematics Kenya&rdquo; with real-time trip tracking, risk score gauge, fleet overview, and driver profile management</li>
@@ -519,8 +523,9 @@
                     </div>
                     <p class="project-desc">
                         A production-ready Phase II diabetes clinical trial monitoring system using CDISC SDTM data. 
-                        Features role-based access control, audit logging, patient management, and safety tracking — 
-                        deployed via Docker and Shinyapps.io with GitHub Actions CI/CD.
+                        Features a multi-step role-based access workflow (Investigator &rarr; Monitor &rarr; Admin) 
+                        with state transitions, audit logging, and safety tracking — deployed via Docker and 
+                        Shinyapps.io with GitHub Actions CI/CD.
                     </p>
                     <ul class="project-features">
                         <li><strong>Role-Based Access Control</strong> — Investigator, Monitor, Admin with scoped permissions</li>
@@ -618,46 +623,6 @@
                         </a>
                         <a href="https://github.com/musanyaks/kenya-insurance-hub" target="_blank" class="project-link">
                             View Code <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Loss Reserving Workbench -->
-                <div class="project-card fade-in">
-                    <div class="project-header">
-                        <div class="project-icon"><i class="fas fa-calculator"></i></div>
-                        <div>
-                            <div class="project-title">Loss Reserving Workbench</div>
-                            <span class="project-lang">Python &middot; Streamlit &middot; SQLAlchemy &middot; Alembic</span>
-                        </div>
-                    </div>
-                    <p class="project-desc">
-                        Production-oriented actuarial loss reserving application: claim-triangle analysis 
-                        with classic deterministic methods, stochastic uncertainty models, and a governed, 
-                        fully audited persistence layer.
-                    </p>
-                    <ul class="project-features">
-                        <li><strong>Chain Ladder</strong> with selectable factor averaging (volume-weighted / simple, all-years / last-N) and tail factor</li>
-                        <li><strong>Mack (1993)</strong> reserve uncertainty — per-origin and total prediction error, lognormal confidence ranges</li>
-                        <li><strong>ODP Bootstrap</strong> (England & Verrall 2002; Shapland 2016) — parameter + process uncertainty, empirical percentile bands</li>
-                        <li><strong>Bornhuetter-Ferguson</strong>, <strong>Cape Cod</strong> (Stanard-Bühlmann), <strong>Expected Loss Ratio</strong></li>
-                        <li><strong>Governance layer</strong> — preparer → reviewer → approver workflow with segregation of duties enforced server-side</li>
-                        <li><strong>Full audit trail</strong> — locked valuations, unlocking with recorded reason, reproducible saved runs</li>
-                        <li><strong>Alembic-managed schema</strong> — SQLite (WAL) or PostgreSQL via one env var</li>
-                        <li><strong>Excel export</strong> workbook &middot; Docker &middot; CI &middot; 38 tests</li>
-                    </ul>
-                    <div class="project-stats">
-                        <div class="project-stat"><strong>5</strong>Methods</div>
-                        <div class="project-stat"><strong>38</strong>Tests</div>
-                        <div class="project-stat"><strong>Live</strong>Streamlit</div>
-                        <div class="project-stat"><strong>4</strong>User Roles</div>
-                    </div>
-                    <div style="display:flex;gap:1rem;margin-top:1rem;">
-                        <a href="https://github.com/musanyaks/loss-reserving-app" target="_blank" class="project-link">
-                            View on GitHub <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://loss-reserving-app.streamlit.app" target="_blank" class="project-link">
-                            Live Demo <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
                 </div>
@@ -779,6 +744,7 @@
                         <span class="skill-tag">Bash</span>
                         <span class="skill-tag">HTML/CSS</span>
                         <span class="skill-tag">Flutter / Dart</span>
+                        <span class="skill-tag highlight">JSON / Structured Data</span>
                     </div>
                 </div>
                 <div class="skill-category fade-in">
@@ -789,6 +755,8 @@
                     <div class="skill-tags">
                         <span class="skill-tag highlight">targets (ETL Orchestration)</span>
                         <span class="skill-tag highlight">ETL/ELT Pipelines</span>
+                        <span class="skill-tag highlight">REST API Design</span>
+                        <span class="skill-tag highlight">Multi-step Workflow Design</span>
                         <span class="skill-tag highlight">Data Cleaning</span>
                         <span class="skill-tag">Data Modeling</span>
                         <span class="skill-tag">Web Scraping</span>
@@ -834,6 +802,7 @@
                         <span class="skill-tag highlight">Shinyapps.io</span>
                         <span class="skill-tag highlight">plumber (APIs)</span>
                         <span class="skill-tag highlight">Nginx</span>
+                        <span class="skill-tag">API Authentication</span>
                         <span class="skill-tag">Git/GitHub</span>
                         <span class="skill-tag">pre-commit</span>
                     </div>
@@ -864,6 +833,7 @@
                         <span class="skill-tag">Bayesian Methods</span>
                         <span class="skill-tag">Statistical Modeling</span>
                         <span class="skill-tag highlight">Actuarial Methods</span>
+                        <span class="skill-tag highlight">Technical Writing</span>
                     </div>
                 </div>
                 <div class="skill-category fade-in">
@@ -932,8 +902,9 @@
             <div class="contact-card fade-in">
                 <h2>Interested in working together?</h2>
                 <p>
-                    I am open to Data Engineer opportunities where I can apply my expertise in 
-                    production data pipelines, automation, dashboard building, and creating systems that turn raw data into insights.
+                    I am open to opportunities where I can apply my expertise in API design, 
+                    structured data systems, multi-step workflow logic, and precise technical communication 
+                    to build high-quality, production-grade solutions.
                 </p>
                 <div class="contact-buttons">
                     <a href="mailto:nyakerabachi@gmail.com" class="contact-btn email">
