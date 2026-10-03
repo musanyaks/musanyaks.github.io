@@ -3,9 +3,6 @@
    fallbacks, toasts, CV check, GitHub API, contact form
 ===================================================== */
 
-const $  = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-
 /* ---------- toast ---------- */
 let toastT;
 function toast(msg){
