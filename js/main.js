@@ -1,6 +1,7 @@
 /* =====================================================
-   main.js — behaviour only: theme, menu, spy, reveal,
-   fallbacks, toasts, CV check, GitHub API, contact form
+   main.js — behaviour only. NOTE: $ and $$ are defined
+   in render.js (which loads first) — do NOT declare
+   them again here.
 ===================================================== */
 
 /* ---------- toast ---------- */
@@ -23,6 +24,9 @@ function toast(msg){
   $('#viewAll').href = CONFIG.githubUrl + '/?tab=repositories';
   $('#visitGh').href = CONFIG.githubUrl;
 })();
+
+/* esc is defined in render.js and reused here */
+const escMain = window.esc; /* not needed — esc is global via render.js */
 
 /* ---------- theme ---------- */
  $('#themeBtn').addEventListener('click', () => {
@@ -62,10 +66,14 @@ const rio = new IntersectionObserver(entries => entries.forEach(en => {
  $$('.reveal').forEach(el => rio.observe(el));
 
 /* ---------- graceful image fallbacks ----------
-   data-fb="remove" → photo missing: remove <img>, styled stand-in shows
-   data-fb="letter" → devicon failed: swap to coloured letter tile      */
+   data-fb="avatar" → photo missing: use GitHub avatar, then remove
+   data-fb="letter" → devicon failed: coloured letter tile
+   data-fb="remove" → screenshot missing: keep drawn SVG mock       */
  $$('img[data-fb]').forEach(img => img.addEventListener('error', () => {
-  if (img.dataset.fb === 'letter'){
+  if (img.dataset.fb === 'avatar'){
+    img.src = 'https://avatars.githubusercontent.com/' + CONFIG.githubUser + '?s=800';
+    img.dataset.fb = 'remove';                       // if even the avatar fails, next error removes it
+  } else if (img.dataset.fb === 'letter'){
     const s = document.createElement('span');
     s.className = 'f-letter';
     s.style.background = img.dataset.color || '#1E88E5';
@@ -102,7 +110,9 @@ fetch('https://api.github.com/users/' + CONFIG.githubUser)
   .then(u => { $('#ghMeta').textContent = `${u.public_repos} public repos · ${u.followers} followers`; })
   .catch(() => { /* offline: meta line just stays empty */ });
 
-/* ---------- contact form → pre-filled mail draft ---------- */
+/* ---------- contact form → real, pre-filled drafts (no backend) ----------
+   Gmail opens immediately in a new tab; WhatsApp + mail-app buttons
+   remain visible below the form as alternatives.                       */
  $('#contactForm').addEventListener('submit', e => {
   e.preventDefault();
   const name  = $('#fName').value.trim(),
@@ -114,10 +124,25 @@ fetch('https://api.github.com/users/' + CONFIG.githubUser)
   $('#w-email').classList.toggle('bad', !eOk);          ok = ok && eOk;
   $('#w-msg').classList.toggle('bad', msg.length < 10); ok = ok && msg.length >= 10;
   if (!ok){ toast('Check the highlighted fields'); return; }
-  const subject = encodeURIComponent('Portfolio enquiry — ' + name);
-  const body = encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')');
-  window.location.href = 'mailto:' + CONFIG.email + '?subject=' + subject + '&body=' + body;
-  toast('Opening your mail app — the draft is pre-filled');
+
+  const subject = 'Portfolio enquiry — ' + name;
+  const body    = msg + '\n\n— ' + name + ' (' + email + ')';
+
+  const links = [];
+  /* Gmail web compose — works for anyone signed into Gmail, no mail client needed */
+  links.push(`<a class="fb-btn fb-hl" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONFIG.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}">Open in Gmail</a>`);
+  /* WhatsApp — appears only if CONFIG.whatsapp is set */
+  if (CONFIG.whatsapp){
+    links.push(`<a class="fb-btn" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')')}">Send on WhatsApp</a>`);
+  }
+  /* Classic mail app, for those who have one */
+  links.push(`<a class="fb-btn" href="mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}">Default mail app</a>`);
+
+  const row = $('#formFallback');
+  row.innerHTML = links.join('');
+  row.classList.add('show');
+  row.querySelector('.fb-hl').click();   /* opens Gmail right away; if popup-blocked, buttons are visible */
+  toast('Pre-filled draft ready — choose how to send');
 });
 
 /* ---------- footer year ---------- */

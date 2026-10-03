@@ -8,6 +8,9 @@ const CONFIG = {
   phone: '0704059015',
   location: 'Nairobi, Kenya',
 
+  /* international format, no + sign (0704… → 254704059015) */
+  whatsapp: '254704059015',
+
   githubUser: 'musanyaks',
   githubUrl: 'https://github.com/musanyaks',
 

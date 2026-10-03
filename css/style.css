@@ -118,7 +118,6 @@ body.lock{overflow:hidden}
 /* ================= about ================= */
 .about{background:var(--bg-alt)}
 .about-grid{display:grid;grid-template-columns:220px minmax(0,1fr) 340px;gap:0;align-items:start}
-
 /* portrait — blue-rimmed, softly glowing */
 .portrait{position:relative;aspect-ratio:5/6;border-radius:14px;overflow:hidden;
   border:1px solid rgba(77,169,255,.45);
@@ -126,20 +125,17 @@ body.lock{overflow:hidden}
   background:linear-gradient(165deg,#16385F,#0C1F3A);margin-right:44px}
 .portrait .fb{position:absolute;inset:0;width:100%;height:100%}
 .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-
 /* middle column */
 .about-main{padding-right:44px}
 .about-main h2{font:700 24px 'Poppins';margin:6px 0 14px}
 .about-main>p{font:400 14.5px/1.75 'Inter';color:var(--body);max-width:56ch}
 .about-main>p+p{margin-top:12px}
-
 /* feature strip with dividers */
 .features{margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr)}
 .feature{padding:4px 18px;border-left:1px solid var(--border)}
 .feature:first-child{border-left:0;padding-left:0}
 .feature svg{width:23px;height:23px;color:var(--accent-2)}
 .feature span{display:block;margin-top:10px;font:500 12.5px/1.45 'Inter';color:var(--text)}
-
 /* right column — vertical divider on its left edge */
 .about-skills{border-left:1px solid var(--border);padding-left:40px}
 .about-skills .grp{margin-bottom:24px}
@@ -198,6 +194,12 @@ body.lock{overflow:hidden}
 .ferr{display:none;font:400 11.5px 'Inter';color:var(--err);margin-top:5px}
 .field.bad .ferr{display:block}
 .btn-send{width:100%;justify-content:center;border-radius:9px;margin-top:6px}
+/* send options shown after submit */
+.form-fallback{display:none;gap:10px;flex-wrap:wrap;margin-top:14px}
+.form-fallback.show{display:flex}
+.fb-btn{font:600 12.5px 'Inter';color:var(--text);background:var(--card-2);border:1px solid var(--border-strong);border-radius:8px;padding:9px 14px;text-decoration:none;transition:border-color .2s,color .2s}
+.fb-btn:hover{border-color:var(--accent-2);color:var(--accent-2)}
+.fb-hl{background:var(--tag-bg);border-color:var(--tag-border);color:var(--tag-text)}
 .c-gh{display:flex;flex-direction:column;align-items:center;text-align:center;gap:15px}
 .c-gh .oct{width:56px;height:56px;fill:var(--text);opacity:.92}
 .c-gh p{font:400 13.5px/1.6 'Inter';color:var(--body)}
