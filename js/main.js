@@ -55,7 +55,7 @@ const spy = new IntersectionObserver(entries => {
     $$('.nav a, .mnav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
   });
 }, { rootMargin: '-42% 0px -52% 0px' });
-['home','about','projects','skills','contact'].forEach(id => {
+['home','about','projects','skills','contact','guestbook'].forEach(id => {
   const el = document.getElementById(id); if (el) spy.observe(el);
 });
 

@@ -249,3 +249,23 @@ footer{background:var(--bg-deep);border-top:1px solid var(--border);padding:22px
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none}
 }
+
+
+/* ================= guestbook ================= */
+.guestbook{background:var(--bg-alt)}
+.gb-head{margin-bottom:6px}
+.gb-grid{margin-top:30px;display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:40px;align-items:start}
+.hp-field{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.gb-count{font:500 12px 'Inter';color:var(--muted);margin-bottom:14px;letter-spacing:.04em}
+.gb-list{display:grid;gap:12px;max-height:460px;overflow-y:auto;padding-right:6px}
+.gb-item{display:flex;gap:13px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.gb-avatar{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font:700 14px 'Poppins'}
+.gb-top{display:flex;align-items:baseline;gap:10px}
+.gb-top b{font:600 13.5px 'Inter';color:var(--text)}
+.gb-top time{font:400 11px 'Inter';color:var(--muted)}
+.gb-body p{margin-top:5px;font:400 13.5px/1.6 'Inter';color:var(--body);overflow-wrap:anywhere}
+.gb-note{background:var(--card);border:1px dashed var(--border-strong);border-radius:12px;padding:18px;font:400 13px/1.6 'Inter';color:var(--muted)}
+@media (max-width:900px){ .gb-grid{grid-template-columns:1fr} }
+
+
+

@@ -4,11 +4,12 @@
 ===================================================== */
 
 const NAV_LINKS = [
-  { id: 'home',     label: 'Home' },
-  { id: 'about',    label: 'About' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills',   label: 'Skills' },
-  { id: 'contact',  label: 'Contact' }
+  { id: 'home',      label: 'Home' },
+  { id: 'about',     label: 'About' },
+  { id: 'projects',  label: 'Projects' },
+  { id: 'skills',    label: 'Skills' },
+  { id: 'contact',   label: 'Contact' },
+  { id: 'guestbook', label: 'Guestbook' }
 ];
 
 /* icon names refer to the set in js/render.js */
