@@ -17,9 +17,9 @@ const CONFIG = {
   cvPath: 'assets/Musa-Rioba-CV.pdf',
 
   /* paste your profile URLs here — empty = friendly toast on click */
-  socials: {
-    linkedin: '',
-    twitter: ''
+    socials: {
+    linkedin: 'https://www.linkedin.com/in/musarioba/',
+    twitter:  'https://twitter.com/musarioba'
   }
 };
 
