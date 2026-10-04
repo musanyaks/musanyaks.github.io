@@ -14,7 +14,7 @@ const CONFIG = {
   githubUser: 'musanyaks',
   githubUrl: 'https://github.com/musanyaks',
 
-  cvPath: 'assets/Musa-Rioba-CV.pdf',
+  cvPath: 'assets/Musa_rioba_Resume.pdf',
 
   /* paste your profile URLs here — empty = friendly toast on click */
     socials: {
