@@ -8,6 +8,8 @@
    section shows a setup note and never breaks the page.
 ===================================================== */
 
+const FB_CONFIG = { ...your values... };
+
 const firebaseConfig = {
   apiKey: "AIzaSyB12V-71MMUhYs0SGZkQj5cZ6rx6-o8Ip0",
   authDomain: "portfolio-18cbb.firebaseapp.com",
