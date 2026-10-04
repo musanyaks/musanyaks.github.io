@@ -15,7 +15,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/skills.css">
 <script>
 /* theme pre-paint — must stay inline to avoid a flash of wrong theme */
 (function(){try{var t=localStorage.getItem('mr-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
@@ -143,26 +142,15 @@ document.documentElement.classList.add('js');
   </div>
 </section>
 
-<!-- ================= SKILLS (replace the whole old <section id="skills"> block with this) ================= -->
-<section class="sk2" id="skills">
-  <div class="sk2-in">
-    <header class="sk2-head">
-      <div>
-        <p class="sk2-eye">MY SKILLS</p>
-        <h2>Skills &amp; <span>Technologies</span></h2>
-        <p class="sk2-sub">A combination of modern tools, frameworks and technologies that I use to build scalable applications, analyse data and create real-world solutions.</p>
-      </div>
-      <div class="sk2-hero">
-        <img src="assets/skills-laptop.png" alt="" loading="lazy">
-        <ul class="sk2-words"><li>Code</li><li>Analyse</li><li>Build</li><li>Improve</li></ul>
-      </div>
-    </header>
-    <div class="sk2-grid" id="skillDash"></div>
-    <p class="sk2-foot">TURNING DATA INTO INSIGHTS &nbsp;•&nbsp; BUILDING SOLUTIONS FOR A SMARTER TOMORROW</p>
-    <ul id="skillGrid" hidden></ul><!-- kept so the old render.js does not error -->
+<!-- ================= SKILLS ================= -->
+<section class="section skills" id="skills">
+  <div class="container">
+    <h2 class="sec-h2 reveal">Skills &amp; Technologies</h2>
+    <p class="sec-sub reveal" style="--d:.06s">Tools and technologies I use to build and analyse data-driven solutions.</p>
+    <!-- tiles — filled by render.js from SKILLS in data.js -->
+    <ul class="skill-grid reveal" id="skillGrid" style="--d:.12s"></ul>
   </div>
 </section>
-
 
 <!-- ================= CONTACT ================= -->
 <section class="section contact" id="contact">
@@ -255,7 +243,6 @@ document.documentElement.classList.add('js');
 <script src="js/data.js"></script>
 <script src="js/render.js"></script>
 <script src="js/main.js"></script>
-<script src="js/skills.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="js/comments.js"></script>
