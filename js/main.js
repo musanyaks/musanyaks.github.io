@@ -110,10 +110,34 @@ fetch('https://api.github.com/users/' + CONFIG.githubUser)
   .then(u => { $('#ghMeta').textContent = `${u.public_repos} public repos · ${u.followers} followers`; })
   .catch(() => { /* offline: meta line just stays empty */ });
 
-/* ---------- contact form → real, pre-filled drafts (no backend) ----------
-   Gmail opens immediately in a new tab; WhatsApp + mail-app buttons
-   remain visible below the form as alternatives.                       */
- $('#contactForm').addEventListener('submit', e => {
+/* ---------- contact form: send options always visible under the button ----------
+   Gmail / WhatsApp / mail app links show from page load and update live as the
+   visitor types. "Send Message" validates, then opens Gmail as the main option. */
+const contactForm = $('#contactForm'), sendRow = $('#formFallback');
+
+function buildSendLinks(){
+  const name  = $('#fName').value.trim(),
+        email = $('#fEmail').value.trim(),
+        msg   = $('#fMsg').value.trim();
+
+  const subject = 'Portfolio enquiry' + (name ? ' — ' + name : '');
+  const sig  = name ? '\n\n— ' + name + (email ? ' (' + email + ')' : '') : '';
+  const body = msg + sig;
+
+  const links = [];
+  links.push(`<a class="fb-btn fb-hl" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONFIG.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}">Open in Gmail</a>`);
+  if (CONFIG.whatsapp){
+    links.push(`<a class="fb-btn" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(body)}">Send on WhatsApp</a>`);
+  }
+  links.push(`<a class="fb-btn" href="mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}">Default mail app</a>`);
+
+  sendRow.innerHTML = links.join('');
+  sendRow.classList.add('show');
+}
+buildSendLinks();
+['#fName', '#fEmail', '#fMsg'].forEach(sel => $(sel).addEventListener('input', buildSendLinks));
+
+contactForm.addEventListener('submit', e => {
   e.preventDefault();
   const name  = $('#fName').value.trim(),
         email = $('#fEmail').value.trim(),
@@ -125,24 +149,9 @@ fetch('https://api.github.com/users/' + CONFIG.githubUser)
   $('#w-msg').classList.toggle('bad', msg.length < 10); ok = ok && msg.length >= 10;
   if (!ok){ toast('Check the highlighted fields'); return; }
 
-  const subject = 'Portfolio enquiry — ' + name;
-  const body    = msg + '\n\n— ' + name + ' (' + email + ')';
-
-  const links = [];
-  /* Gmail web compose — works for anyone signed into Gmail, no mail client needed */
-  links.push(`<a class="fb-btn fb-hl" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONFIG.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}">Open in Gmail</a>`);
-  /* WhatsApp — appears only if CONFIG.whatsapp is set */
-  if (CONFIG.whatsapp){
-    links.push(`<a class="fb-btn" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')')}">Send on WhatsApp</a>`);
-  }
-  /* Classic mail app, for those who have one */
-  links.push(`<a class="fb-btn" href="mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}">Default mail app</a>`);
-
-  const row = $('#formFallback');
-  row.innerHTML = links.join('');
-  row.classList.add('show');
-  row.querySelector('.fb-hl').click();   /* opens Gmail right away; if popup-blocked, buttons are visible */
-  toast('Pre-filled draft ready — choose how to send');
+  buildSendLinks();
+  sendRow.querySelector('.fb-hl').click();   /* opens Gmail; other options stay visible below */
+  toast('Draft ready — or choose WhatsApp / mail app below');
 });
 
 /* ---------- footer year ---------- */
