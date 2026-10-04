@@ -156,3 +156,6 @@ contactForm.addEventListener('submit', e => {
 
 /* ---------- footer year ---------- */
  $('#year').textContent = new Date().getFullYear();
+
+   <script src="js/skills.js"></script>
+
