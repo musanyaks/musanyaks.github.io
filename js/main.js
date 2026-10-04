@@ -1,6 +1,6 @@
 /* =====================================================
-   main.js — behaviour only. NOTE: $ and $$ are defined
-   in render.js (which loads first) — do NOT declare
+   main.js - behaviour only. NOTE: $ and $$ are defined
+   in render.js (which loads first) - do NOT declare
    them again here.
 ===================================================== */
 
@@ -25,11 +25,8 @@ function toast(msg){
   $('#visitGh').href = CONFIG.githubUrl;
 })();
 
-/* esc is defined in render.js and reused here */
-const escMain = window.esc; /* not needed — esc is global via render.js */
-
 /* ---------- theme ---------- */
- $('#themeBtn').addEventListener('click', () => {
+$('#themeBtn').addEventListener('click', () => {
   const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
   document.documentElement.dataset.theme = next;
   try { localStorage.setItem('mr-theme', next); } catch(e){}
@@ -63,16 +60,13 @@ const spy = new IntersectionObserver(entries => {
 const rio = new IntersectionObserver(entries => entries.forEach(en => {
   if (en.isIntersecting){ en.target.classList.add('in'); rio.unobserve(en.target); }
 }), { threshold: .12 });
- $$('.reveal').forEach(el => rio.observe(el));
+$$('.reveal').forEach(el => rio.observe(el));
 
-/* ---------- graceful image fallbacks ----------
-   data-fb="avatar" → photo missing: use GitHub avatar, then remove
-   data-fb="letter" → devicon failed: coloured letter tile
-   data-fb="remove" → screenshot missing: keep drawn SVG mock       */
- $$('img[data-fb]').forEach(img => img.addEventListener('error', () => {
+/* ---------- graceful image fallbacks ---------- */
+$$('img[data-fb]').forEach(img => img.addEventListener('error', () => {
   if (img.dataset.fb === 'avatar'){
     img.src = 'https://avatars.githubusercontent.com/' + CONFIG.githubUser + '?s=800';
-    img.dataset.fb = 'remove';                       // if even the avatar fails, next error removes it
+    img.dataset.fb = 'remove';
   } else if (img.dataset.fb === 'letter'){
     const s = document.createElement('span');
     s.className = 'f-letter';
@@ -84,7 +78,7 @@ const rio = new IntersectionObserver(entries => entries.forEach(en => {
   }
 }));
 
-/* ---------- unconfigured links → honest toast ---------- */
+/* ---------- unconfigured links -> honest toast ---------- */
 document.addEventListener('click', e => {
   const ph = e.target.closest('[data-placeholder]');
   if (!ph) return;
@@ -92,7 +86,7 @@ document.addEventListener('click', e => {
   const name = ph.dataset.name || '';
   toast(ph.dataset.placeholder === 'demo'
     ? `Add the live demo URL for ${name} in js/data.js (demo field)`
-    : `Add your ${name} URL in js/config.js → socials`);
+    : `Add your ${name} URL in js/config.js -> socials`);
 });
 
 /* ---------- CV button (honest check when served over http) ---------- */
@@ -100,19 +94,17 @@ let cvMissing = false;
 if (location.protocol.indexOf('http') === 0){
   fetch(CONFIG.cvPath, { method: 'HEAD' }).then(r => { cvMissing = !r.ok; }).catch(() => {});
 }
- $('#cvBtn').addEventListener('click', e => {
-  if (cvMissing){ e.preventDefault(); toast('CV not found — drop your PDF at ' + CONFIG.cvPath); }
+$('#cvBtn').addEventListener('click', e => {
+  if (cvMissing){ e.preventDefault(); toast('CV not found - drop your PDF at ' + CONFIG.cvPath); }
 });
 
 /* ---------- live GitHub stats ---------- */
 fetch('https://api.github.com/users/' + CONFIG.githubUser)
   .then(r => r.ok ? r.json() : Promise.reject())
   .then(u => { $('#ghMeta').textContent = `${u.public_repos} public repos · ${u.followers} followers`; })
-  .catch(() => { /* offline: meta line just stays empty */ });
+  .catch(() => {});
 
-/* ---------- contact form: send options always visible under the button ----------
-   Gmail / WhatsApp / mail app links show from page load and update live as the
-   visitor types. "Send Message" validates, then opens Gmail as the main option. */
+/* ---------- contact form: send options always visible under the button ---------- */
 const contactForm = $('#contactForm'), sendRow = $('#formFallback');
 
 function buildSendLinks(){
@@ -120,8 +112,8 @@ function buildSendLinks(){
         email = $('#fEmail').value.trim(),
         msg   = $('#fMsg').value.trim();
 
-  const subject = 'Portfolio enquiry' + (name ? ' — ' + name : '');
-  const sig  = name ? '\n\n— ' + name + (email ? ' (' + email + ')' : '') : '';
+  const subject = 'Portfolio enquiry' + (name ? ' - ' + name : '');
+  const sig  = name ? '\n\n- ' + name + (email ? ' (' + email + ')' : '') : '';
   const body = msg + sig;
 
   const links = [];
@@ -150,12 +142,9 @@ contactForm.addEventListener('submit', e => {
   if (!ok){ toast('Check the highlighted fields'); return; }
 
   buildSendLinks();
-  sendRow.querySelector('.fb-hl').click();   /* opens Gmail; other options stay visible below */
-  toast('Draft ready — or choose WhatsApp / mail app below');
+  sendRow.querySelector('.fb-hl').click();
+  toast('Draft ready - or choose WhatsApp / mail app below');
 });
 
 /* ---------- footer year ---------- */
- $('#year').textContent = new Date().getFullYear();
-
-   <script src="js/skills.js"></script>
-
+$('#year').textContent = new Date().getFullYear();
