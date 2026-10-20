@@ -219,7 +219,13 @@
     let ok = true;
     if (!name) { nameF.classList.add("is-error"); ok = false; }
     if (!message) { textF.classList.add("is-error"); ok = false; }
-    if (!ok || !commentsRef) return;
+    const note = $(".msg-form__note", form);
+    if (!ok) return;
+    if (!commentsRef) {
+      note.textContent = "Not connected: check js/firebase-config.js (press F12 → Console for details).";
+      return;
+    }
+    note.textContent = "Posting…";
     const btn = $("button[type=submit]", form);
     btn.disabled = true;
     try {
@@ -230,9 +236,10 @@
       });
       form.reset();
       $("#msgCount").textContent = "0";
+      note.textContent = "Posted ✓";
     } catch (err) {
       console.error(err);
-      alert("Couldn't post your message. Please try again.");
+      note.textContent = "Couldn't post: " + (err.code || err.message || "unknown error");
     } finally {
       btn.disabled = false;
     }
