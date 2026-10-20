@@ -276,7 +276,6 @@
   box.addEventListener("click", async (e) => {
     const btn = e.target.closest("[data-del]");
     if (!btn || !commentsRef) return;
-    if (!confirm("Delete your message?")) return;
     btn.disabled = true;
     try {
       await commentsRef.doc(btn.dataset.del).delete();
