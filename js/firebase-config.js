@@ -1,11 +1,10 @@
-/* Paste your Firebase web app config here.
-   Firebase console > Project settings (gear icon) > General > Your apps > portfolio-web > SDK setup and configuration > Config.
-   These values are safe to publish: your Firestore security rules are what protect the data. */
+/* Firebase web app config (public by design — Firestore security rules protect the data). */
 window.FIREBASE_CONFIG = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID",
-  appId: "PASTE_YOUR_APP_ID",
+  apiKey: "AIzaSyB12V-71MMUhYs0SGZkQj5cZ6rx6-o8Ip0",
+  authDomain: "portfolio-18cbb.firebaseapp.com",
+  projectId: "portfolio-18cbb",
+  storageBucket: "portfolio-18cbb.firebasestorage.app",
+  messagingSenderId: "1004700306998",
+  appId: "1:1004700306998:web:9e58ca611099e9698c1297",
+  measurementId: "G-1XMK4JEGHV",
 };
