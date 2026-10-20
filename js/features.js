@@ -150,7 +150,15 @@
     if (s < 86400) return Math.floor(s / 3600) + "h ago";
     return Math.floor(s / 86400) + "d ago";
   };
-  const renderMessages = (list) => {
+
+  let commentsRef = null;
+  let auth = null;
+  let authReady = null;
+  let myUid = null;
+  let lastList = [];
+
+  const renderMessages = (list = lastList) => {
+    lastList = list;
     if (!list.length) {
       box.innerHTML = `<p class="messages__empty">No messages yet — be the first to say hello 👋</p>`;
       return;
@@ -164,6 +172,7 @@
           <div class="msg__head">
             <span class="msg__name">${esc(m.name)}</span>
             <span class="msg__time">${timeAgo(m.ts)}</span>
+            ${m.uid && m.uid === myUid ? `<button class="msg__del" data-del="${esc(m.id)}" title="Delete your message">delete</button>` : ""}
           </div>
           <p class="msg__text">${esc(m.message)}</p>
         </div>
@@ -172,7 +181,6 @@
       .join("");
   };
 
-  let commentsRef = null;
   try {
     const cfg = window.FIREBASE_CONFIG;
     if (!window.firebase || !cfg || !cfg.projectId || /PASTE|YOUR_/.test(cfg.apiKey || "")) {
@@ -180,6 +188,13 @@
     }
     firebase.initializeApp(cfg);
     commentsRef = firebase.firestore().collection("comments");
+
+    // anonymous sign-in: lets each visitor delete only their own messages
+    auth = firebase.auth();
+    auth.onAuthStateChanged((u) => { myUid = u ? u.uid : null; renderMessages(); });
+    authReady = auth.currentUser ? Promise.resolve(auth.currentUser) : auth.signInAnonymously().then((c) => c.user);
+    authReady.catch((err) => console.error("Anonymous sign-in failed:", err));
+
     // live listener: every visitor sees new messages the moment they are posted
     commentsRef
       .orderBy("createdAt", "desc")
@@ -189,7 +204,13 @@
           renderMessages(
             snap.docs.map((d) => {
               const x = d.data({ serverTimestamps: "estimate" });
-              return { name: x.name, message: x.message, ts: x.createdAt ? x.createdAt.toMillis() : Date.now() };
+              return {
+                id: d.id,
+                uid: x.uid,
+                name: x.name,
+                message: x.message,
+                ts: x.createdAt ? x.createdAt.toMillis() : Date.now(),
+              };
             })
           );
         },
@@ -229,7 +250,9 @@
     const btn = $("button[type=submit]", form);
     btn.disabled = true;
     try {
+      const user = await authReady;
       await commentsRef.add({
+        uid: user.uid,
         name: name.slice(0, 40),
         message: message.slice(0, 280),
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -242,6 +265,20 @@
       note.textContent = "Couldn't post: " + (err.code || err.message || "unknown error");
     } finally {
       btn.disabled = false;
+    }
+  });
+
+  box.addEventListener("click", async (e) => {
+    const btn = e.target.closest("[data-del]");
+    if (!btn || !commentsRef) return;
+    if (!confirm("Delete your message?")) return;
+    btn.disabled = true;
+    try {
+      await commentsRef.doc(btn.dataset.del).delete();
+    } catch (err) {
+      console.error(err);
+      btn.disabled = false;
+      alert("Couldn't delete: " + (err.code || err.message));
     }
   });
 
