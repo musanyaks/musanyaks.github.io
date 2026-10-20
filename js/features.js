@@ -239,8 +239,18 @@
     const body = encodeURIComponent(
       `${$("#cMessage").value.trim()}\n\n— ${$("#cName").value.trim()} (${$("#cEmail").value.trim()})`
     );
-    $("#formNote").textContent = "Opening your mail app…";
-    location.href = `mailto:nyakerabachi@gmail.com?subject=${subject}&body=${body}`;
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      $("#formNote").textContent = "Opening your mail app…";
+      location.href = `mailto:nyakerabachi@gmail.com?subject=${subject}&body=${body}`;
+    } else {
+      $("#formNote").textContent = "Opening Gmail…";
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=nyakerabachi@gmail.com&su=${subject}&body=${body}`,
+        "_blank",
+        "noopener"
+      );
+    }
   });
 
   $("#sendWhatsApp")?.addEventListener("click", () => {
