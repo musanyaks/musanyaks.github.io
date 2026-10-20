@@ -140,15 +140,9 @@
     if (e.target.closest("[data-close]")) closeModal();
   });
 
-  /* ---------- guestbook ---------- */
-  const KEY = "mr-messages";
+  /* ---------- guestbook (Firebase Firestore, real-time) ---------- */
   const box = $("#messages");
   const form = $("#msgForm");
-  const load = () => {
-    try { return JSON.parse(localStorage.getItem(KEY) || "[]"); }
-    catch { return []; }
-  };
-  const save = (list) => localStorage.setItem(KEY, JSON.stringify(list));
   const timeAgo = (ts) => {
     const s = (Date.now() - ts) / 1000;
     if (s < 60) return "just now";
@@ -156,64 +150,92 @@
     if (s < 86400) return Math.floor(s / 3600) + "h ago";
     return Math.floor(s / 86400) + "d ago";
   };
-  const render = () => {
-    const list = load();
+  const renderMessages = (list) => {
     if (!list.length) {
       box.innerHTML = `<p class="messages__empty">No messages yet — be the first to say hello 👋</p>`;
       return;
     }
     box.innerHTML = list
       .map(
-        (m, i) => `
+        (m) => `
       <article class="msg">
         <div class="msg__avatar">${esc((m.name || "?").trim().charAt(0).toUpperCase())}</div>
         <div>
           <div class="msg__head">
             <span class="msg__name">${esc(m.name)}</span>
-            ${m.title ? `<span class="msg__title">${esc(m.title)}</span>` : ""}
             <span class="msg__time">${timeAgo(m.ts)}</span>
-            <button class="msg__del" data-del="${i}" title="Delete (saved in this browser)">delete</button>
           </div>
-          <p class="msg__text">${esc(m.text)}</p>
+          <p class="msg__text">${esc(m.message)}</p>
         </div>
       </article>`
       )
       .join("");
   };
-  setTimeout(render, 700); // brief "Loading messages…" moment
+
+  let commentsRef = null;
+  try {
+    const cfg = window.FIREBASE_CONFIG;
+    if (!window.firebase || !cfg || !cfg.projectId || /PASTE|YOUR_/.test(cfg.apiKey || "")) {
+      throw new Error("Firebase is not configured");
+    }
+    firebase.initializeApp(cfg);
+    commentsRef = firebase.firestore().collection("comments");
+    // live listener: every visitor sees new messages the moment they are posted
+    commentsRef
+      .orderBy("createdAt", "desc")
+      .limit(50)
+      .onSnapshot(
+        (snap) => {
+          renderMessages(
+            snap.docs.map((d) => {
+              const x = d.data({ serverTimestamps: "estimate" });
+              return { name: x.name, message: x.message, ts: x.createdAt ? x.createdAt.toMillis() : Date.now() };
+            })
+          );
+        },
+        (err) => {
+          console.error(err);
+          box.innerHTML = `<p class="messages__empty">Couldn't load messages right now. Please try again later.</p>`;
+        }
+      );
+  } catch (err) {
+    console.error(err);
+    box.innerHTML = `<p class="messages__empty">Messages are temporarily unavailable.</p>`;
+  }
 
   const msgText = $("#msgText");
   msgText?.addEventListener("input", () => {
     $("#msgCount").textContent = msgText.value.length;
   });
 
-  form?.addEventListener("submit", (e) => {
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const nameF = $("#msgName").closest(".field");
     const textF = $("#msgText").closest(".field");
     nameF.classList.remove("is-error");
     textF.classList.remove("is-error");
     const name = $("#msgName").value.trim();
-    const text = msgText.value.trim();
+    const message = msgText.value.trim();
     let ok = true;
     if (!name) { nameF.classList.add("is-error"); ok = false; }
-    if (!text) { textF.classList.add("is-error"); ok = false; }
-    if (!ok) return;
-    const list = load();
-    list.unshift({ name, title: $("#msgTitle").value.trim(), text, ts: Date.now() });
-    save(list.slice(0, 30));
-    form.reset();
-    $("#msgCount").textContent = "0";
-    render();
-  });
-
-  box.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-del]");
-    if (!btn) return;
-    const list = load();
-    list.splice(+btn.dataset.del, 1);
-    save(list);
-    render();
+    if (!message) { textF.classList.add("is-error"); ok = false; }
+    if (!ok || !commentsRef) return;
+    const btn = $("button[type=submit]", form);
+    btn.disabled = true;
+    try {
+      await commentsRef.add({
+        name: name.slice(0, 40),
+        message: message.slice(0, 280),
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+      form.reset();
+      $("#msgCount").textContent = "0";
+    } catch (err) {
+      console.error(err);
+      alert("Couldn't post your message. Please try again.");
+    } finally {
+      btn.disabled = false;
+    }
   });
 
   /* ---------- contact form → email / WhatsApp ---------- */

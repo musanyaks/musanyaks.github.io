@@ -425,18 +425,14 @@ insight = analyse(df)
     <header class="section__head reveal" data-reveal>
       <span class="section__index">05 — Visitor Messages</span>
       <h2 class="section__title">Say <span class="grad">hello</span></h2>
-      <p class="section__sub">Leave a message — yours is saved in this browser and shows up instantly below.</p>
+      <p class="section__sub">Leave a message — it goes live for everyone to see, instantly.</p>
     </header>
 
     <form class="msg-form reveal" data-reveal id="msgForm" novalidate>
-      <div class="msg-form__row">
+      <div class="msg-form__row" style="grid-template-columns:1fr">
         <label class="field">
           <span>Name</span>
           <input type="text" id="msgName" name="name" maxlength="40" placeholder="Your name" required autocomplete="name" />
-        </label>
-        <label class="field">
-          <span>Title <em>(optional)</em></span>
-          <input type="text" id="msgTitle" name="title" maxlength="60" placeholder="e.g. Fellow developer" />
         </label>
       </div>
       <label class="field">
@@ -446,7 +442,7 @@ insight = analyse(df)
       </label>
       <div class="msg-form__foot">
         <button type="submit" class="btn btn--primary magnetic">Post message</button>
-        <span class="msg-form__note">Stored locally · no account needed</span>
+        <span class="msg-form__note">Public · no account needed</span>
       </div>
     </form>
 
@@ -558,6 +554,9 @@ insight = analyse(df)
   </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
 <script src="js/main.js"></script>
 <script src="js/features.js"></script>
 </body>
