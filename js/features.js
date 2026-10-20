@@ -299,7 +299,6 @@
     { name: "Go to Messages", hint: "#guestbook", run: () => go("#guestbook") },
     { name: "Go to Contact", hint: "#contact", run: () => go("#contact") },
     { name: "View on GitHub", hint: "external", run: () => window.open("https://github.com/musanyaks", "_blank", "noopener") },
-    { name: "Copy email address", hint: "clipboard", run: () => copyBtn?.click() },
     { name: "Toggle theme", hint: "T", run: () => $("#themeToggle").click() },
     { name: "Back to top", hint: "home", run: () => scrollTo({ top: 0, behavior: "smooth" }) },
   ];
