@@ -171,6 +171,7 @@
         <div>
           <div class="msg__head">
             <span class="msg__name">${esc(m.name)}</span>
+            ${m.title ? `<span class="msg__title">${esc(m.title)}</span>` : ""}
             <span class="msg__time">${timeAgo(m.ts)}</span>
             ${m.uid && m.uid === myUid ? `<button class="msg__del" data-del="${esc(m.id)}" title="Delete your message">delete</button>` : ""}
           </div>
@@ -208,6 +209,7 @@
                 id: d.id,
                 uid: x.uid,
                 name: x.name,
+                title: x.title,
                 message: x.message,
                 ts: x.createdAt ? x.createdAt.toMillis() : Date.now(),
               };
@@ -251,12 +253,15 @@
     btn.disabled = true;
     try {
       const user = await authReady;
-      await commentsRef.add({
+      const data = {
         uid: user.uid,
         name: name.slice(0, 40),
         message: message.slice(0, 280),
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      });
+      };
+      const title = $("#msgTitle").value.trim();
+      if (title) data.title = title.slice(0, 60);
+      await commentsRef.add(data);
       form.reset();
       $("#msgCount").textContent = "0";
       note.textContent = "Posted ✓";

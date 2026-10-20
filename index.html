@@ -429,10 +429,14 @@ insight = analyse(df)
     </header>
 
     <form class="msg-form reveal" data-reveal id="msgForm" novalidate>
-      <div class="msg-form__row" style="grid-template-columns:1fr">
+      <div class="msg-form__row">
         <label class="field">
           <span>Name</span>
           <input type="text" id="msgName" name="name" maxlength="40" placeholder="Your name" required autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>Title <em>(optional)</em></span>
+          <input type="text" id="msgTitle" name="title" maxlength="60" placeholder="e.g. Fellow developer" />
         </label>
       </div>
       <label class="field">
